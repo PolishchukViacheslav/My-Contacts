@@ -40,3 +40,5 @@ export const incrementAsync = amount => dispatch => {
 export const selectCount = state => state.counter.value;
 
 export default counterSlice.reducer;
+
+//____________________________-----------______________________________________________
