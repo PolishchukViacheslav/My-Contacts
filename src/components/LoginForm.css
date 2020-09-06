@@ -1,0 +1,27 @@
+.login-form {
+  position: relative;
+  padding: 24px;
+}
+
+.login-form__input-wrapper {
+  padding: 5px 0 5px 5px;
+  border: 1px solid lightgrey;
+}
+
+.login-form__input {
+  position: relative;
+  top: -5px;
+  margin-left: 5px;
+  border: none;
+  width: 80%;
+  outline: none;
+}
+
+.login-form__input-wrapper:focus-within {
+  border-color: #1890ff;
+} 
+
+.login-form__input-instructions {
+  margin-bottom: 10px;
+  font-size: 0.5em;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   // setContacts,
@@ -16,8 +16,6 @@ export function Contacts() {
   }, [dispatch]);
   
   const contacts = useSelector(selectContacts);
-  console.log('contacts', contacts);
-  // const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
     <div className="contacts">

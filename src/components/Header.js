@@ -5,6 +5,7 @@ import './Header.css';
 import LoginPopup from './LoginPopup';
 
 function Header() {
+
   return (
     <header className="App__header header">
         {/* <img src={logo} className="App-logo" alt="logo" /> */}
@@ -24,8 +25,10 @@ function Header() {
             </span>
               <span>Sign In</span>
           </button>
+          <div className="login__popup-wrapper">
+            <LoginPopup />
+          </div>
         </div>
-        <LoginPopup />
       </header>
   )
 }

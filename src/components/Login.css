@@ -1,0 +1,43 @@
+/* .login {
+
+} */
+
+.login__popup-wrapper {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(200, 200, 200, .7);
+  /* opacity: 0.5; */
+}
+
+.login__popup {
+  position: relative;
+  width: 520px;
+  top: 0;
+  left: 0;
+  text-align: left;
+  transform: translate(40vw, 40vh);
+  background-color: #fff;
+}
+
+.login__header {
+  padding: 16px 24px;
+}
+
+.login__icon {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.login__button {
+  padding: 3px 2px;
+  color: #1890ff;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  background-color: transparent;
+}
