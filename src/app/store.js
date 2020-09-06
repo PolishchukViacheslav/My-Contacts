@@ -1,9 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import counterReducer from '../features/counter/counterSlice';
+import contactsReducer from '../features/contacts/contactsSlice';
+import { reducer as formFReducer } from 'redux-form';
 
 export default configureStore({
   reducer: {
-    counter: counterReducer,
+    contacts: contactsReducer,
+    form: formFReducer,
   },
 });
- 

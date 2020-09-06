@@ -1,0 +1,30 @@
+.header__wrapper {
+  display: flex;
+  flex-direction: row;
+}
+
+.header__navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0  20px;
+}
+
+.nav__list {
+  display: flex;
+  flex-direction: row;
+}
+
+.login__icon {
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+.login__button {
+  padding: 3px 2px;
+  color: #1890ff;
+  cursor: pointer;
+  font-size: 14px;
+  border: none;
+  background-color: transparent;
+}

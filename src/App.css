@@ -13,13 +13,18 @@
   }
 }
 
-.App-header {
-  min-height: 100vh;
+.App__header {
+  position: fixed;
   display: flex;
-  flex-direction: column;
+  min-height: 10vh;
+  width: 100vw;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 0 20px;
   font-size: calc(10px + 2vmin);
+  background-color: #fff;
+  z-index: 1;
 }
 
 .App-link {

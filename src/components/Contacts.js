@@ -1,22 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
-  decrement,
-  increment,
-  incrementByAmount,
-  incrementAsync,
-  selectCount,
-} from './counterSlice';
-import styles from './Counter.module.css';
+  // setContacts,
+  selectContacts,
+  getContacts,
+} from '../features/contacts/contactsSlice';
+import './Contacts.css';
+import { URL } from '../features/API/config';
 
-export function Counter() {
-  const count = useSelector(selectCount);
+export function Contacts() {
   const dispatch = useDispatch();
-  const [incrementAmount, setIncrementAmount] = useState('2');
+
+  useEffect(() => {
+    dispatch(getContacts(URL));
+  }, [dispatch]);
+  
+  const contacts = useSelector(selectContacts);
+  console.log('contacts', contacts);
+  // const [incrementAmount, setIncrementAmount] = useState('2');
 
   return (
-    <div>
-      <div className={styles.row}>
+    <div className="contacts">
+    <ul>
+      {contacts.map(contact => (
+        <li key={contact.login.uuid}>{contact.name.first}</li>
+      ))}
+    </ul>
+      {/* <div className={styles.row}>
         <button
           className={styles.button}
           aria-label="Increment value"
@@ -54,7 +64,7 @@ export function Counter() {
         >
           Add Async
         </button>
-      </div>
+      </div> */}
     </div>
   );
 }
