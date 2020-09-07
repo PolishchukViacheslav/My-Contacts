@@ -27,6 +27,17 @@
   z-index: 1;
 }
 
+.App__contacts {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding-top: 10vh;
+  max-width: 1600px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
 .App-link {
   color: rgb(112, 76, 182);
 }

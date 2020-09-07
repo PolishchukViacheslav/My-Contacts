@@ -13,12 +13,12 @@
   width: 100vw;
   background: rgba(200, 200, 200, .7);
   opacity: 1;
-  /* visibility: hidden; */
 }
 
 .login__popup-wrapper--hidden {
   display: none;
   visibility: hidden;
+  top: -100vh;
   opacity: 0;
 }
 

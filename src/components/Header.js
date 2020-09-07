@@ -6,6 +6,7 @@ import LoginPopup from './LoginPopup';
 import { useDispatch, useSelector } from 'react-redux';
 import { setVisibility, selectPopupVisibility } from '../features/reduxSlices/loginPopupSlice';
 import store from '../app/store';
+import HeaderNavigation from './HeaderNavigation';
 
 function Header() {
   const dispatch = useDispatch();
@@ -19,15 +20,9 @@ function Header() {
 
   return (
     <header className="App__header header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
         <div className="header__wrapper">
           <span >{mainLogoIcon}</span>
-          <nav className="header__navigation nav">
-            <ul className="nav__list">
-              <li className="nav__item">Home</li>
-              <li className="nav__item">Home</li>
-            </ul>
-          </nav>
+          <HeaderNavigation />
         </div>
         <div className="header__login login">
           <button type="button" className="login__button" onClick={handleLogin}>

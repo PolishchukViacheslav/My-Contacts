@@ -52,15 +52,21 @@ export const getContacts = createAsyncThunk('contacts/getContacts', async (endpo
   } 
 );
 
+const isUser = localStorage.hasOwnProperty('user');
+
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
+    isUser,
     value: [],
   },
   reducers: {
     setContacts: (state, action) => {
       state.value = [...action.payload]
     },
+    setIsUser: (state, action) => {
+      state.isUser = action.payload
+    }
   },
   extraReducers: {
     [getContacts.fulfilled]: (state, action) => {
@@ -69,9 +75,10 @@ export const contactsSlice = createSlice({
   }
 });
 
-export const { setContacts } = contactsSlice.actions;
+export const { setContacts, setIsUser } = contactsSlice.actions;
 
 
 
 export const selectContacts = state => state.contacts.value;
+export const selectIsUser = state => state.contacts.isUser;
 export default contactsSlice.reducer;

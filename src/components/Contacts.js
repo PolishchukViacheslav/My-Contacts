@@ -4,9 +4,10 @@ import {
   // setContacts,
   selectContacts,
   getContacts,
-} from '../features/contacts/contactsSlice';
+} from '../features/reduxSlices/contactsSlice';
 import './Contacts.css';
 import { URL } from '../features/API/config';
+import Contact from './Contact';
 
 export function Contacts() {
   const dispatch = useDispatch();
@@ -18,51 +19,12 @@ export function Contacts() {
   const contacts = useSelector(selectContacts);
 
   return (
-    <div className="contacts">
-    <ul>
-      {contacts.map(contact => (
-        <li key={contact.login.uuid}>{contact.name.first}</li>
-      ))}
-    </ul>
-      {/* <div className={styles.row}>
-        <button
-          className={styles.button}
-          aria-label="Increment value"
-          onClick={() => dispatch(increment())}
-        >
-          +
-        </button>
-        <span className={styles.value}>{count}</span>
-        <button
-          className={styles.button}
-          aria-label="Decrement value"
-          onClick={() => dispatch(decrement())}
-        >
-          -
-        </button>
-      </div>
-      <div className={styles.row}>
-        <input
-          className={styles.textbox}
-          aria-label="Set increment amount"
-          value={incrementAmount}
-          onChange={e => setIncrementAmount(e.target.value)}
-        />
-        <button
-          className={styles.button}
-          onClick={() =>
-            dispatch(incrementByAmount(Number(incrementAmount) || 0))
-          }
-        >
-          Add Amount
-        </button>
-        <button
-          className={styles.asyncButton}
-          onClick={() => dispatch(incrementAsync(Number(incrementAmount) || 0))}
-        >
-          Add Async
-        </button>
-      </div> */}
+    <div className="App__contacts">
+      <ul className="contacts">
+        {contacts.map(contact => (
+          <Contact key={contact.login.uuid} contact={contact}/>
+        ))}
+      </ul>
     </div>
   );
 }
