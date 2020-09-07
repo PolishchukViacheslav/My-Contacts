@@ -3,7 +3,8 @@
 } */
 
 .login__popup-wrapper {
-  display: block;
+  display: grid;
+  place-items: center;
   position: fixed;
   top: 0;
   right: 0;
@@ -11,16 +12,20 @@
   height: 100vh;
   width: 100vw;
   background: rgba(200, 200, 200, .7);
-  /* opacity: 0.5; */
+  opacity: 1;
+  /* visibility: hidden; */
+}
+
+.login__popup-wrapper--hidden {
+  display: none;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .login__popup {
-  position: relative;
   width: 520px;
-  top: 0;
-  left: 0;
+  border-radius: 3px;
   text-align: left;
-  transform: translate(40vw, 40vh);
   background-color: #fff;
 }
 

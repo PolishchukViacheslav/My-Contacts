@@ -57,7 +57,7 @@ export const contactsSlice = createSlice({
   initialState: {
     value: [],
   },
-  reducer: {
+  reducers: {
     setContacts: (state, action) => {
       state.value = [...action.payload]
     },

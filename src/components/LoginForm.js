@@ -2,6 +2,7 @@ import React from 'react';
 import { Field, reduxForm } from 'redux-form';
 import './LoginForm.css'
 import { userIcon, lockIcon } from '../icons/icons';
+import LoginFormFooter from './LoginFormFooter';
 
 let LoginForm = (props) => {
   const { handleSubmit } = props;
@@ -9,20 +10,21 @@ let LoginForm = (props) => {
   return (
     <form onSubmit={handleSubmit} className="login-form">
       <div className="login-form__input-wrapper">
-        <span role="img" aria-label="user" class="">{userIcon}</span>
+        <span role="img" aria-label="user" className="">{userIcon}</span>
         <label htmlFor="email">
           <Field name="email" component="input" type="email" placeholder="Email" className="login-form__input" />
         </label>
       </div>
       <div className="login-form__input-instructions">Type valid Email</div>
       <div className="login-form__input-wrapper">
-        <span role="img" aria-label="lock" class="">{lockIcon}</span>
+        <span role="img" aria-label="lock" className="">{lockIcon}</span>
         <label htmlFor="password">
           <Field name="password" component="input" type="password" placeholder="Password" className="login-form__input" />
         </label>
       </div>
       <div className="login-form__input-instructions">Type valid Password min 8</div>
-      <button type="Submit">Submit</button>
+      {/* <button type="Submit">Submit</button> */}
+      <LoginFormFooter />
     </form>
   )
 }
