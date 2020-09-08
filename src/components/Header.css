@@ -1,8 +1,18 @@
 .header {
   border-bottom: 1px solid lightgrey;
+  -webkit-box-shadow: 5px -3px 29px -6px rgba(0,0,0,0.91);
+  -moz-box-shadow: 5px -3px 29px -6px rgba(0,0,0,0.91);
+  box-shadow: 5px -3px 29px -6px rgba(0,0,0,0.91);
 }
 
 .header__wrapper {
   display: flex;
   flex-direction: row;
+}
+
+.header__navigation {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0  20px;
 }

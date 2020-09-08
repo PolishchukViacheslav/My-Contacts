@@ -1,20 +1,22 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 
-import { Contacts } from './components/Contacts';
 import './App.css';
-import Header from './components/Header';
-import { useSelector } from 'react-redux';
-import { selectIsUser } from './features/reduxSlices/contactsSlice';
+import { Page } from './components/Page';
 
 function App() {
-  const isLogged = useSelector(selectIsUser);
-  console.log('is', isLogged);
+  // const isLogged = useSelector(selectIsUser);
+  // console.log('is', isLogged);
 
   return (
-    <section className="App">
-      <Header />
-      {isLogged && <Contacts />}
-    </section>
+      <Router>
+        <Page />
+      </Router>
   );
 }
 

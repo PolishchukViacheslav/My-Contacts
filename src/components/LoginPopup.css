@@ -2,7 +2,7 @@
 
 } */
 
-.login__popup-wrapper {
+.login__popup {
   display: grid;
   place-items: center;
   position: fixed;
@@ -15,14 +15,14 @@
   opacity: 1;
 }
 
-.login__popup-wrapper--hidden {
+.login__popup--hidden {
   display: none;
   visibility: hidden;
   top: -100vh;
   opacity: 0;
 }
 
-.login__popup {
+.login__popup-wrapper {
   width: 520px;
   border-radius: 3px;
   text-align: left;
