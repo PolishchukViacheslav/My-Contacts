@@ -22,6 +22,4 @@ export const SignIn = () => {
       <LoginPopup />
     </div>
   )
-}
-
-export default SignIn
+};

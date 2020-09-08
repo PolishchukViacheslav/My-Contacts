@@ -23,7 +23,6 @@ let LoginForm = (props) => {
         </label>
       </div>
       <div className="login-form__input-instructions">Type valid Password min 8</div>
-      {/* <button type="Submit">Submit</button> */}
       <LoginFormFooter />
     </form>
   )

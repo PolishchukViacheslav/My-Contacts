@@ -8,19 +8,25 @@ export const getUser = createAsyncThunk('user/getUser', async (endpoint) => {
 );
 
 const isUser = localStorage.hasOwnProperty('user');
+// console.log('Store', typeof isUser);
 
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    isUser,
+    isUser: true,
     info: null,
   },
   reducers: {
     setUser: (state, action) => {
-      state.info = action.payload
+      return {...state,
+      info: action.payload,
+      }
     },
     setIsUser: (state, action) => {
-      state.isUser = action.payload
+      return {
+        ...state,
+        isUser: action.payload,
+      }
     }
   },
   extraReducers: {

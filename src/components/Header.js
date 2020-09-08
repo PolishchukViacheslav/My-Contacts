@@ -2,9 +2,14 @@ import React from 'react';
 import { mainLogoIcon } from '../icons/icons';
 import './Header.css';
 import HeaderNavigation from './HeaderNavigation';
-import SignIn from './SignIn';
+import { SignIn } from './SignIn';
+import { useSelector } from 'react-redux';
+import { selectIsUser } from '../features/reduxSlices/userSlice';
+import { UserDashboard } from './UserDashboard';
 
-function Header() {
+export const Header = () => {
+  const isLogged = useSelector(selectIsUser);
+  console.log('isLogged', isLogged);
 
   return (
     <header className="App__header header">
@@ -12,9 +17,7 @@ function Header() {
           <span >{mainLogoIcon}</span>
           <HeaderNavigation />
         </div>
-        <SignIn />
+        {isLogged ? <UserDashboard /> : <SignIn />}
       </header>
   )
-}
-
-export default Header
+};

@@ -1,5 +1,5 @@
 import React from 'react'
-import Header from './Header';
+import { Header } from './Header';
 import { selectIsUser } from '../features/reduxSlices/userSlice';
 import { useSelector } from 'react-redux';
 import { Contacts } from './Contacts';
