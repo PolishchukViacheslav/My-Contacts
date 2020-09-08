@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { Contacts } from './components/Contacts';
 import './App.css';
