@@ -4,8 +4,7 @@ import { selectUser, setUser, getUser } from '../features/reduxSlices/userSlice'
 import { USER_URL } from '../features/API/config';
 import './UserDashboard.css';
 import { arrowIcon } from '../icons/icons';
-import Dropdown from './Dropdown';
-import { useHistory } from 'react-router-dom';
+import { Dropdown } from './Dropdown';
 
 export const UserDashboard = () => {
   const [isDropdownShown, setIsDropdownShown] = useState(false);
@@ -47,7 +46,7 @@ export const UserDashboard = () => {
               alt="user foto" 
               className="user-dashboard__image" 
             />
-            <div class="user-dashboard__dropdown dropdown">
+            <div className="user-dashboard__dropdown dropdown">
               {isDropdownShown && <Dropdown hideAwaySelf={setDropdownHidden} />}
             </div>
           </>

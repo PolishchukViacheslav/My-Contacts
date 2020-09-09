@@ -3,9 +3,8 @@ import LoginForm from './LoginForm';
 import './LoginPopup.css';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectPopupVisibility, setVisibility } from '../features/reduxSlices/loginPopupSlice';
-import { setIsUser, getUser } from '../features/reduxSlices/userSlice';
+import { setIsUser } from '../features/reduxSlices/userSlice';
 import { useHistory } from 'react-router-dom';
-import { USER_URL } from '../features/API/config';
 
 const LoginPopup = () => {
   const isVisible = useSelector(selectPopupVisibility);

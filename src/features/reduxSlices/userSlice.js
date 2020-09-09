@@ -7,7 +7,7 @@ export const getUser = createAsyncThunk('user/getUser', async (endpoint) => {
   } 
 );
 
-const isUser = localStorage.hasOwnProperty('user');
+// const isUser = localStorage.hasOwnProperty('user');
 // console.log('Store', typeof isUser);
 
 export const userSlice = createSlice({

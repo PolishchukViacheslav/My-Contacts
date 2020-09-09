@@ -3,7 +3,7 @@ import { NavLink, useHistory } from 'react-router-dom'
 import { logOutIcon, userIcon } from '../icons/icons';
 import './Dropdown.css';
 
-function Dropdown({ hideAwaySelf }) {
+export const Dropdown = ({ hideAwaySelf }) => {
   const profile = 'Profile';
   const logOut = 'LogOut';
   const history = useHistory();
@@ -37,6 +37,5 @@ function Dropdown({ hideAwaySelf }) {
       </NavLink>
     </>
   )
-}
+};
 
-export default Dropdown

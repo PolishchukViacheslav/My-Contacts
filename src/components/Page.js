@@ -10,18 +10,19 @@ import { UserProfile } from './UserProfile';
 
 export const Page = () => {
   const isLogged = useSelector(selectIsUser);
+  console.log('isLogged', isLogged);
 
   return (
       <>
         <Header />
-        <Switch>
           <section className="App__body">
-            <Route exact path="/" component={Home} />
-            {isLogged && <Route exact path="/contacts" component={Contacts} />}
-            {isLogged && <Route exact path="/profile" component={UserProfile} />}
-            <Route component={NotFound} />
+            <Switch>
+              <Route exact path="/" component={Home} />
+              {isLogged && <Route exact path="/contacts" component={Contacts} />}
+              {isLogged && <Route exact path="/profile" component={UserProfile} />}
+              {/* <Route to="*" component={NotFound} /> */}
+            </Switch>
           </section>
-        </Switch>
       </>
   )
 };
