@@ -1,11 +1,19 @@
 .contacts {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   width: 100%;
 }
 
-.contacts__item {
-  display: inline-block;
-  width: 320px;
-  height: 500px;
-  border: 1px solid lightgrey;
-  margin: 10px;
+.contacts__search-bar {
+  display: flex;
+  /* flex-direction: row; */
+  width: 100%;
+  margin-bottom: 0 auto 10px;
+}
+
+.contacts--stringify {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  overflow: scroll;
 }

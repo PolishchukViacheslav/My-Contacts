@@ -1,0 +1,41 @@
+.contacts__header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+.contacts__button-group {
+  display: flex;
+}
+
+.contacts__button--dotted{
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px dotted #1890ff;
+  color:#1890ff;
+  background-color: #fff;
+  transition: color 0.2s;
+}
+
+.contacts__button--dotted:hover {
+  color: #40a9ff;
+  border-color: #40a9ff;
+}
+
+.contacts__button {
+  width: 32px;
+  height: 32px;
+  margin-left: 3px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  color:lightgrey;
+  background-color: #fff;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.contacts__button:hover {
+  color: #40a9ff;
+  border-color: #40a9ff;
+}

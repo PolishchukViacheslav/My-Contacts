@@ -1,0 +1,14 @@
+.search-bar {
+  justify-content: space-around;
+  max-width: 1200px;
+  width: stretch;
+}
+
+.search-bar__wrapper {
+  display: flex;
+}
+
+.search-bar__button {
+  color: red;
+  border: none;
+}
