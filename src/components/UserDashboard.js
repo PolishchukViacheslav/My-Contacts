@@ -1,14 +1,18 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { selectUser, setIsUser, setUser, getUser } from '../features/reduxSlices/userSlice';
+import { selectUser, setUser, getUser } from '../features/reduxSlices/userSlice';
 import { USER_URL } from '../features/API/config';
 import './UserDashboard.css';
-import { arrow } from '../icons/icons';
+import { arrowIcon } from '../icons/icons';
+import Dropdown from './Dropdown';
+import { useHistory } from 'react-router-dom';
 
 export const UserDashboard = () => {
+  const [isDropdownShown, setIsDropdownShown] = useState(false);
+  const setDropdownVisible = () => setIsDropdownShown(true);
+  const setDropdownHidden = () => setIsDropdownShown(false);
   const dispatch = useDispatch();
   const user = useSelector(selectUser);
-  console.log('user', user);
 
   useEffect(() => {
 
@@ -30,19 +34,22 @@ export const UserDashboard = () => {
 
   return (
     <div className="header__login user-dashboard">
-      <div className="user-dashboard__wrapper">
+      <div className="user-dashboard__wrapper" onMouseEnter={setDropdownVisible} onMouseLeave={setDropdownHidden}>
         {user 
           ?
           <>
             <span className="user-dashboard__text">
             {`Hello ${user?.name?.title} ${user?.name?.first} ${user?.name?.last}`}
             </span>
-            <span className="user-dashboard__arrow">{arrow}</span>
+            <span className="user-dashboard__arrow">{arrowIcon}</span>
             <img 
               src={user?.picture?.large} 
               alt="user foto" 
               className="user-dashboard__image" 
             />
+            <div class="user-dashboard__dropdown dropdown">
+              {isDropdownShown && <Dropdown hideAwaySelf={setDropdownHidden} />}
+            </div>
           </>
           :
           <div>Loading...</div> }
