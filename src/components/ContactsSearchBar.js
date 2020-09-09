@@ -2,9 +2,13 @@ import React from 'react';
 import './ContactsSearchBar.css';
 
 export const ContactsSearchBar = () => {
+  const handleSubmit = (event) => {
+    event.preventDefault();
+  }
+  
   return (
     <div className="contacts__search-bar search-bar">
-      <form className="search-bar__wrapper">
+      <form className="search-bar__wrapper" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">
             <input type="text" name="name" placeholder="Search by full name" />

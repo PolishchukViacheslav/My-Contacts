@@ -11,4 +11,5 @@
 .search-bar__button {
   color: red;
   border: none;
+  background-color: transparent;
 }

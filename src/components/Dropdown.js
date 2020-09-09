@@ -2,17 +2,29 @@ import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { logOutIcon, userIcon } from '../icons/icons';
 import './Dropdown.css';
+import { useDispatch } from 'react-redux';
+import { setUser, setIsUser } from '../features/reduxSlices/userSlice';
+import { setContacts } from '../features/reduxSlices/contactsSlice';
+import { setStringifyMode } from '../features/reduxSlices/contactsPageConfigSlice';
 
 export const Dropdown = ({ hideAwaySelf }) => {
   const profile = 'Profile';
   const logOut = 'LogOut';
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleClick = (event) => {
     const { target: { innerText } } = event;
     const redirectToProfile = () => history.push(`/${profile.toLowerCase()}`);
-    const redirectToHome = () => history.push(`/${logOut.toLowerCase()}`);
-    console.log('value', innerText, 'is', innerText === profile);
+    const redirectToHome = () => {
+      history.push('./')
+      localStorage.clear();
+      dispatch(setUser(null));
+      dispatch(setIsUser(false));
+      dispatch(setContacts([]));
+      dispatch(setStringifyMode(false));
+
+    };
 
     event.preventDefault();
 

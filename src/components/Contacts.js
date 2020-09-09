@@ -28,11 +28,11 @@ export function Contacts() {
     <div className="App__contacts">
       <ContactsHeader />
       <ContactsSearchBar />
-      <ul className={`contacts${viewModifier}`}>
+      {contacts ? <ul className={`contacts${viewModifier}`}>
         {contacts.map(contact => (
           <Contact key={contact.login.uuid} contact={contact}/>
         ))}
-      </ul>
+      </ul> : 'Loading... Wait or click the refresh button in the upper right corner'}
     </div>
   );
 }
