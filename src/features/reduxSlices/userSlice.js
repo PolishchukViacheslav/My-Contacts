@@ -7,13 +7,13 @@ export const getUser = createAsyncThunk('user/getUser', async (endpoint) => {
   } 
 );
 
-// const isUser = localStorage.hasOwnProperty('user');
-// console.log('Store', typeof isUser);
+const isUser = localStorage.hasOwnProperty('user');
+console.log('Store', typeof isUser);
 
 export const userSlice = createSlice({
   name: 'user',
   initialState: {
-    isUser: true,
+    isUser,
     info: null,
   },
   reducers: {
