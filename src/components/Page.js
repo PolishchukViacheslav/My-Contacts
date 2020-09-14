@@ -10,7 +10,6 @@ import { UserProfile } from './UserProfile';
 
 export const Page = () => {
   const isLogged = useSelector(selectIsUser);
-  console.log('isLogged', isLogged);
 
   return (
       <>

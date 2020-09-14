@@ -11,7 +11,7 @@ export const ContactsSearchBar = () => {
       <form className="search-bar__wrapper" onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">
-            <input type="text" name="name" placeholder="Search by full name" />
+            <input type="text" name="name" placeholder="Search by full name" className="search-bar__name"/>
           </label>
         </div>
         <select name="gender" value={'default'}>

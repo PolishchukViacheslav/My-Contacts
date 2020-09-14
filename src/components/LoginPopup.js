@@ -11,7 +11,8 @@ const LoginPopup = () => {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const handleSubmit = () => {
+  const handleSubmit = (event) => {
+    console.log('event', event);
     dispatch(setIsUser(true));
     dispatch(setVisibility(false));
     history.push('/contacts')

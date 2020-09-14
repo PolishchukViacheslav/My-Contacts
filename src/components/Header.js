@@ -9,7 +9,6 @@ import { UserDashboard } from './UserDashboard';
 
 export const Header = () => {
   const isLogged = useSelector(selectIsUser);
-  console.log('isLogged', isLogged);
 
   return (
     <header className="App__header header">
