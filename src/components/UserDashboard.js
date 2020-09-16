@@ -17,17 +17,14 @@ export const UserDashboard = () => {
 
     if (user !== null) {
       localStorage.setItem('user', JSON.stringify(user));
-      console.log('1');
     };
     
     if (!localStorage.hasOwnProperty('user')) {
       dispatch(getUser(USER_URL));
-      console.log('2');
     };
 
     if (localStorage.hasOwnProperty('user') && user === null) {
       dispatch(setUser(JSON.parse(localStorage.getItem('user'))));
-      console.log('3');
     };
   }, [dispatch, user]);
 

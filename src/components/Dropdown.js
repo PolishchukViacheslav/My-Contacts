@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { setUser, setIsUser } from '../features/reduxSlices/userSlice';
 import { setContacts } from '../features/reduxSlices/contactsSlice';
 import { setStringifyMode } from '../features/reduxSlices/contactsPageConfigSlice';
+import { setDefaultFilteredContacts, setNationalities } from '../features/reduxSlices/filterSlice';
 
 export const Dropdown = ({ hideAwaySelf }) => {
   const profile = 'Profile';
@@ -23,6 +24,7 @@ export const Dropdown = ({ hideAwaySelf }) => {
       dispatch(setIsUser(false));
       dispatch(setContacts([]));
       dispatch(setStringifyMode(false));
+      dispatch(setDefaultFilteredContacts([]));
 
     };
 

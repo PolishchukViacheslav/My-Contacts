@@ -1,28 +1,35 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, getContacts } from '../features/reduxSlices/contactsSlice';
+import { selectPreparedContacts, setDefaultFilteredContacts } from '../features/reduxSlices/filterSlice';
 import { selectStringifyMode } from '../features/reduxSlices/contactsPageConfigSlice';
-import './Contacts.css';
 import { URL } from '../features/API/config';
 import Contact from './Contact';
 import { ContactsHeader } from './ContactsHeader';
-import { ContactsSearchBar } from './ContactsSearchBar';
+import { ContactsSearchBar } from './ContactSearchBar/ContactsSearchBar';
+import './Contacts.css';
 
 export function Contacts() {
   const dispatch = useDispatch();
-  const contacts = useSelector(selectContacts);
-
+  const contactsFromServer = useSelector(selectContacts);
+  const contacts = useSelector(selectPreparedContacts);
 
   const isContactsStringView = useSelector(selectStringifyMode);
   const viewModifier = isContactsStringView ? '--stringify' : '';
 
   useEffect(() => {
-
-    if (!contacts.length) {
+    
+    if (!contactsFromServer.length) {
       dispatch(getContacts(URL));
+      dispatch(setDefaultFilteredContacts(contactsFromServer));
     };
 
-  }, [contacts.length, dispatch]);
+    if (!contacts.length) {
+      dispatch(setDefaultFilteredContacts(contactsFromServer));
+    }
+
+
+  }, [contacts.length, contactsFromServer, contactsFromServer.length, dispatch]);
 
   return (
     <div className="App__contacts">

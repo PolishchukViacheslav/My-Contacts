@@ -11,13 +11,14 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-ul, h1, h6 {
+ul, h1, h6, input {
   margin: 0;
   padding: 0;
   list-style-type: none;
+  border: none;
 }
 
-button:focus {
+input:focus, button:focus, select:focus {
   outline:0;
 }
 

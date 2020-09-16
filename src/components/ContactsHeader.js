@@ -1,16 +1,21 @@
 import React from 'react';
 import './ContactsHeader.css';
 import { refreshIcon, platesViewIcon, tabularViewIcon } from '../icons/icons';
-import { useDispatch } from 'react-redux';
-import { getContacts } from '../features/reduxSlices/contactsSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { getContacts, selectContacts } from '../features/reduxSlices/contactsSlice';
 import { URL } from '../features/API/config';
 import { setStringifyMode } from '../features/reduxSlices/contactsPageConfigSlice';
+import { setDefaultFilteredContacts, setIsContactsWereUpdated } from '../features/reduxSlices/filterSlice';
 
 export const ContactsHeader = () => {
   const dispatch = useDispatch();
+  const contactsFromServer = useSelector(selectContacts);
+
 
   const handleUserRefresh = () => {
     dispatch(getContacts(URL));
+    dispatch(setDefaultFilteredContacts(contactsFromServer))
+    dispatch(setIsContactsWereUpdated(true));
   }
 
   const handlePlatesViewMode = () => {
