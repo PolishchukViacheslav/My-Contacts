@@ -1,5 +1,5 @@
-import React, { useEffect, useMemo, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { batch, useDispatch, useSelector } from 'react-redux';
 import { contactsPreparator, getPieceOfData } from '../../../features/functions';
 import { selectContacts } from '../../../features/reduxSlices/contactsSlice';
 import { selectActiveGender, selectActiveName, selectActiveNat, selectPreparedContacts, setActiveGender, setDefaultFilteredContacts, setIsContactsWereUpdated } from '../../../features/reduxSlices/filterSlice'
@@ -15,6 +15,7 @@ export const FilterByGender = () => {
   const contacts = useSelector(selectPreparedContacts);
   const genders = getPieceOfData(contacts, 'gender');
 
+
   const handleChange = ({target: { value }}) => {
     console.log('value', value);
     const reduxValue = (value.toLowerCase() === 'all') ? null : value.toLowerCase();
@@ -23,14 +24,18 @@ export const FilterByGender = () => {
 console.log('reduxValue', reduxValue);
 
     setValue(stateValue);
-    dispatch(setActiveGender(reduxValue));
-    dispatch(setDefaultFilteredContacts(filteredContacts));
-    dispatch(setIsContactsWereUpdated(true));
+
+    batch(() => {
+      dispatch(setActiveGender(reduxValue));
+      dispatch(setDefaultFilteredContacts(filteredContacts));
+      dispatch(setIsContactsWereUpdated(true));
+    })
+
   }
 
   useEffect(() => {
-    dispatch(setIsContactsWereUpdated(false));
-  }, [dispatch])
+    setValue(initialValue);
+  }, [dispatch, initialValue])
 
   return (
     <select className="search-bar__item" name="gender" value={value} onChange={handleChange}>

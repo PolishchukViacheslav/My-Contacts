@@ -18,7 +18,7 @@ export const PasswordField = ({ input, meta: { touched, error, active } }) => {
       <div className="login-form__input-wrapper">
         <span role="img" aria-label="lock" className="">{lockIcon}</span>
         <label htmlFor="password">
-          <input {...input} type={`${fieldType}`} name="password" placeholder="Password" className="login-form__input" />
+          <input {...input} type={`${fieldType}`} name="password" placeholder="Password" className="login-form__input" autoComplete="current-password"/>
         </label>
         <span role="img" aria-label="hidden-password" className="login-form__password" onClick={handlePasswordVisibility}>{isPasswordVisibleIcon}</span>
       </div>

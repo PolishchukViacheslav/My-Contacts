@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 export const filterSlice = createSlice({
   name: 'filters',
   initialState: {
-    preparedContacts: [],
+    preparedContacts: null,
     activeName: null,
     activeNat: null,
     activeGender: null,

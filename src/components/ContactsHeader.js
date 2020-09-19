@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './ContactsHeader.css';
 import { refreshIcon, platesViewIcon, tabularViewIcon } from '../icons/icons';
 import { useDispatch, useSelector } from 'react-redux';
@@ -25,6 +25,10 @@ export const ContactsHeader = () => {
   const handleStringViewMode = () => {
     dispatch(setStringifyMode(true));
   }
+
+  useEffect(()=> {
+    dispatch(setDefaultFilteredContacts(contactsFromServer))
+  },[dispatch, contactsFromServer])
 
 
   return (

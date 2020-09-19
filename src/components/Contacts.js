@@ -2,44 +2,46 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectContacts, getContacts } from '../features/reduxSlices/contactsSlice';
 import { selectPreparedContacts, setDefaultFilteredContacts } from '../features/reduxSlices/filterSlice';
-import { selectStringifyMode } from '../features/reduxSlices/contactsPageConfigSlice';
+// import { selectStringifyMode } from '../features/reduxSlices/contactsPageConfigSlice';
 import { URL } from '../features/API/config';
-import Contact from './Contact';
 import { ContactsHeader } from './ContactsHeader';
 import { ContactsSearchBar } from './ContactSearchBar/ContactsSearchBar';
 import './Contacts.css';
+import { ContactsPlates } from './contacts_body/ContactsPlates';
 
 export function Contacts() {
   const dispatch = useDispatch();
   const contactsFromServer = useSelector(selectContacts);
   const contacts = useSelector(selectPreparedContacts);
 
-  const isContactsStringView = useSelector(selectStringifyMode);
-  const viewModifier = isContactsStringView ? '--stringify' : '';
+  // const isContactsStringView = useSelector(selectStringifyMode);
+  // const viewModifier = isContactsStringView ? '--stringify' : '';
 
   useEffect(() => {
-    
-    if (!contactsFromServer.length) {
+    let isInitialMount = true;
+    if (!contactsFromServer.length && isInitialMount) {
       dispatch(getContacts(URL));
-      dispatch(setDefaultFilteredContacts(contactsFromServer));
+      isInitialMount = false;
+      console.log('nen');
     };
 
-    if (!contacts.length) {
-      dispatch(setDefaultFilteredContacts(contactsFromServer));
-    }
+    // if (contacts === null) {
+    //   dispatch(setDefaultFilteredContacts(contactsFromServer));
+    // }
 
 
-  }, [contacts.length, contactsFromServer, contactsFromServer.length, dispatch]);
+  }, [contactsFromServer.length, dispatch]);
 
   return (
     <div className="App__contacts">
       <ContactsHeader />
       <ContactsSearchBar />
-      {contacts ? <ul className={`contacts${viewModifier}`}>
+      <ContactsPlates />
+      {/* {contacts ? <ul className={`contacts${viewModifier}`}>
         {contacts.map(contact => (
           <Contact key={contact.login.uuid} contact={contact}/>
         ))}
-      </ul> : 'Loading... Wait or click the refresh button in the upper right corner'}
+      </ul> : 'Loading... Wait or click the refresh button in the upper right corner'} */}
     </div>
   );
 }

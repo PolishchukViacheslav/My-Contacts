@@ -2,11 +2,11 @@ import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
 import { logOutIcon, userIcon } from '../icons/icons';
 import './Dropdown.css';
-import { useDispatch } from 'react-redux';
+import { batch, useDispatch } from 'react-redux';
 import { setUser, setIsUser } from '../features/reduxSlices/userSlice';
 import { setContacts } from '../features/reduxSlices/contactsSlice';
 import { setStringifyMode } from '../features/reduxSlices/contactsPageConfigSlice';
-import { setDefaultFilteredContacts, setNationalities } from '../features/reduxSlices/filterSlice';
+import { setDefaultFilteredContacts, setActiveNat, setActiveGender, setActiveName } from '../features/reduxSlices/filterSlice';
 
 export const Dropdown = ({ hideAwaySelf }) => {
   const profile = 'Profile';
@@ -20,11 +20,17 @@ export const Dropdown = ({ hideAwaySelf }) => {
     const redirectToHome = () => {
       history.push('./')
       localStorage.clear();
-      dispatch(setUser(null));
-      dispatch(setIsUser(false));
-      dispatch(setContacts([]));
-      dispatch(setStringifyMode(false));
-      dispatch(setDefaultFilteredContacts([]));
+      batch(() => {
+        dispatch(setUser(null));
+        dispatch(setIsUser(false));
+        dispatch(setContacts([]));
+        dispatch(setStringifyMode(false));
+        dispatch(setDefaultFilteredContacts([]));
+        dispatch(setActiveNat(null));
+        dispatch(setActiveGender(null));
+        dispatch(setActiveName(null));
+
+      });
 
     };
 

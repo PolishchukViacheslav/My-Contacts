@@ -14,7 +14,7 @@ function Contact(props) {
         <img src={contact?.picture?.large} alt="contact" className={`contact__foto${viewModifier}`}/>
         <div className={`contact__text-area${viewModifier}`}>
           <span className="contact__name">
-            {`${contact?.name.title}. ${contact?.name.first} ${contact?.name.last} (${contact?.dob.age} years)`}
+            {`${contact?.name.title} ${contact?.name.first} ${contact?.name.last} (${contact?.dob.age} years)`}
           </span>
           <span><a href={`mailto:${contact?.email}`} className={`contact__link${viewModifier}`}>{contact?.email}</a></span>
           <span><a href={`tel:${contact?.phone}`} className={`contact__link${viewModifier}`}>{contact?.phone}</a></span>

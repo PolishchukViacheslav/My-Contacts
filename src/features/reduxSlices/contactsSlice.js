@@ -19,7 +19,11 @@ export const contactsSlice = createSlice({
   },
   extraReducers: {
     [getContacts.fulfilled]: (state, action) => {
-      state.value = [...action.payload]
+      return {
+        ...state,
+        value: action.payload,
+      }
+      // state.value = [...action.payload]
     }
   }
 });

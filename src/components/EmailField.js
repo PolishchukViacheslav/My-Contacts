@@ -6,7 +6,7 @@ export const EmailField = ({ input, meta: { touched, error, active } }) => {
       <div className="login-form__input-wrapper">
         <span role="img" aria-label="user" className="">{userIcon}</span>
         <label htmlFor="email">
-          <input {...input} name="email" placeholder="Email" className="login-form__input" />
+          <input {...input} name="email" placeholder="Email" className="login-form__input" autoComplete="username"/>
         </label>
       </div>
       {(!touched || active  || !error) && <div className="login-form__input-instructions">Type Email here</div>}
