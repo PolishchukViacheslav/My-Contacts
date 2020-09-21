@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { batch, useDispatch, useSelector } from 'react-redux';
-import { contactsPreparator } from '../../../features/functions';
-import { selectContacts } from '../../../features/reduxSlices/contactsSlice';
-import { selectActiveGender, selectActiveName, selectActiveNat, setDefaultFilteredContacts as setPreparedContacts, setActiveName, setIsContactsWereUpdated } from '../../../features/reduxSlices/filterSlice';
+import { contactsPreparator } from '../../../../features/functions';
+import { selectContacts } from '../../../../features/reduxSlices/contactsSlice';
+import { selectActiveGender, selectActiveName, selectActiveNat, setDefaultFilteredContacts as setPreparedContacts, setActiveName, setIsContactsWereUpdated } from '../../../../features/reduxSlices/filterSlice';
 
 export const FilterByName = () => {
   const dispatch = useDispatch();
@@ -23,7 +23,6 @@ export const FilterByName = () => {
     const stateValueName = (value.toLowerCase() === '') ? '' : value.toLowerCase();
     const filteredContacts = contactsPreparator(initialContact, reduxValueName, activeGender, activeNat) || [];
 
-    // const { value } = target;
     setInputValue(stateValueName);
 
     batch(() => {

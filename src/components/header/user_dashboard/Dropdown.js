@@ -1,12 +1,12 @@
 import React from 'react'
 import { NavLink, useHistory } from 'react-router-dom'
-import { logOutIcon, userIcon } from '../icons/icons';
+import { logOutIcon, userIcon } from '../../../icons/icons';
 import './Dropdown.css';
 import { batch, useDispatch } from 'react-redux';
-import { setUser, setIsUser } from '../features/reduxSlices/userSlice';
-import { setContacts } from '../features/reduxSlices/contactsSlice';
-import { setStringifyMode } from '../features/reduxSlices/contactsPageConfigSlice';
-import { setDefaultFilteredContacts, setActiveNat, setActiveGender, setActiveName } from '../features/reduxSlices/filterSlice';
+import { setUser, setIsUser } from '../../../features/reduxSlices/userSlice';
+import { setContacts } from '../../../features/reduxSlices/contactsSlice';
+import { setStringifyMode } from '../../../features/reduxSlices/contactsPageConfigSlice';
+import { setDefaultFilteredContacts, setActiveNat, setActiveGender, setActiveName } from '../../../features/reduxSlices/filterSlice';
 
 export const Dropdown = ({ hideAwaySelf }) => {
   const profile = 'Profile';
@@ -29,7 +29,6 @@ export const Dropdown = ({ hideAwaySelf }) => {
         dispatch(setActiveNat(null));
         dispatch(setActiveGender(null));
         dispatch(setActiveName(null));
-
       });
 
     };

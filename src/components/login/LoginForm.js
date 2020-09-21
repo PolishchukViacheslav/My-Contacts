@@ -4,7 +4,7 @@ import './LoginForm.css'
 import LoginFormFooter from './LoginFormFooter';
 import { EmailField } from './EmailField';
 import { PasswordField } from './PasswordField';
-import { email, minLength5, minLength8, password, required } from '../features/inputFieldsValidation';
+import { email, minLength5, minLength8, password, required } from '../../features/inputFieldsValidation';
 
 let LoginForm = (props) => {
   const { handleSubmit } = props;

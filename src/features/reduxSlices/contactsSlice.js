@@ -1,18 +1,25 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-export const getContacts = createAsyncThunk('contacts/getContacts', async (endpoint) => {
-  const fetchPromise = await fetch(endpoint);
-  const { results } = await fetchPromise.json();
-  return results;
-  } 
+export const getContacts = createAsyncThunk(
+  'contacts/getContacts', 
+  async (endpoint, { dispatch }) => {
+    const fetchPromise = await fetch(endpoint);
+    const { results } = await fetchPromise.json();
+    dispatch(setDefaultValue(results))
+    return results;
+    } 
 );
 
 export const contactsSlice = createSlice({
   name: 'contacts',
   initialState: {
+    defaultValue: [],
     value: [],
   },
   reducers: {
+    setDefaultValue: (state, action) => {
+      state.defaultValue = action.payload
+    },
     setContacts: (state, action) => {
       state.value = [...action.payload]
     },
@@ -23,12 +30,11 @@ export const contactsSlice = createSlice({
         ...state,
         value: action.payload,
       }
-      // state.value = [...action.payload]
     }
   }
 });
 
-export const { setContacts } = contactsSlice.actions;
+export const { setDefaultValue, setContacts } = contactsSlice.actions;
 
 
 

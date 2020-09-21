@@ -8,9 +8,11 @@ export const filterSlice = createSlice({
     activeNat: null,
     activeGender: null,
     isContactsWereUpdated: false,
+    sortType: 'default',
   },
   reducers: {
     setDefaultFilteredContacts: (state, action) => {
+      console.log('asd', action);
       return {
       ...state,
       preparedContacts: [...action.payload],
@@ -39,18 +41,32 @@ export const filterSlice = createSlice({
         ...state,
         isContactsWereUpdated: action.payload,
       }
+    },
+    setSortType: (state, action) => {
+      return {
+        ...state,
+        sortType: action.payload,
+      }
     }
   }
 });
 
-export const { setIsContactsWereUpdated, setActiveName, setActiveGender, setActiveNat, setDefaultFilteredContacts } = filterSlice.actions;
+export const {
+  setSortType,
+  setIsContactsWereUpdated,
+  setActiveName,
+  setActiveGender,
+  setActiveNat,
+  setDefaultFilteredContacts
+  } = filterSlice.actions;
 
 
 
-export const selectPreparedContacts = state => state.filters?.preparedContacts;
+export const selectPreparedContacts = state => state.filters.preparedContacts;
 export const selectNationalities = state => state.filters.nationalitiesList;
 export const selectActiveNat = state => state.filters.activeNat;
 export const selectActiveName = state => state.filters.activeName;
 export const selectActiveGender = state => state.filters.activeGender;
 export const selectIsContactsUpdated = state => state.filters.isContactsWereUpdated;
+export const selectSortType = state => state.filters.sortType;
 export default filterSlice.reducer;

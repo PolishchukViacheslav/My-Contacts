@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { batch, useDispatch, useSelector } from 'react-redux';
-import { contactsPreparator, getPieceOfData } from '../../../features/functions';
-import { selectContacts } from '../../../features/reduxSlices/contactsSlice';
-import { selectActiveGender, selectActiveName, selectActiveNat, selectPreparedContacts, setActiveNat, setDefaultFilteredContacts as setPreparedContacts, setIsContactsWereUpdated} from '../../../features/reduxSlices/filterSlice';
+import { contactsPreparator, getPieceOfData } from '../../../../features/functions';
+import { selectContacts } from '../../../../features/reduxSlices/contactsSlice';
+import { selectActiveGender, selectActiveName, selectActiveNat, selectPreparedContacts, setActiveNat, setDefaultFilteredContacts as setPreparedContacts, setIsContactsWereUpdated} from '../../../../features/reduxSlices/filterSlice';
 
 export const FilterByNationality = () => {
   const dispatch = useDispatch();

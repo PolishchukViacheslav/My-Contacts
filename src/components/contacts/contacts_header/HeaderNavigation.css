@@ -13,6 +13,7 @@
   color: #1890ff;
 }
 
-.nav__link:hover {
-  color: #40a9ff;
+.nav__link.nav__link--active {
+  text-decoration: none;
+  color: black;
 }

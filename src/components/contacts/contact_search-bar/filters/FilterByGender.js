@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { batch, useDispatch, useSelector } from 'react-redux';
-import { contactsPreparator, getPieceOfData } from '../../../features/functions';
-import { selectContacts } from '../../../features/reduxSlices/contactsSlice';
-import { selectActiveGender, selectActiveName, selectActiveNat, selectPreparedContacts, setActiveGender, setDefaultFilteredContacts, setIsContactsWereUpdated } from '../../../features/reduxSlices/filterSlice'
+import { contactsPreparator, getPieceOfData } from '../../../../features/functions';
+import { selectContacts } from '../../../../features/reduxSlices/contactsSlice';
+import { selectActiveGender, selectActiveName, selectActiveNat, selectPreparedContacts, setActiveGender, setDefaultFilteredContacts, setIsContactsWereUpdated } from '../../../../features/reduxSlices/filterSlice'
 
 export const FilterByGender = () => {
   const dispatch = useDispatch();
@@ -15,13 +15,13 @@ export const FilterByGender = () => {
   const contacts = useSelector(selectPreparedContacts);
   const genders = getPieceOfData(contacts, 'gender');
 
-
+console.log('out', genders, contacts, value, activeGender, initialValue, initialContacts);
   const handleChange = ({target: { value }}) => {
     console.log('value', value);
     const reduxValue = (value.toLowerCase() === 'all') ? null : value.toLowerCase();
     const stateValue = (value.toLowerCase() === 'all') ? 'all' : value.toLowerCase();
     const filteredContacts = contactsPreparator(initialContacts, activeName, reduxValue, activeNat);
-console.log('reduxValue', reduxValue);
+    console.log('in', genders);
 
     setValue(stateValue);
 
@@ -35,7 +35,7 @@ console.log('reduxValue', reduxValue);
 
   useEffect(() => {
     setValue(initialValue);
-  }, [dispatch, initialValue])
+  }, [initialValue, contacts])
 
   return (
     <select className="search-bar__item" name="gender" value={value} onChange={handleChange}>

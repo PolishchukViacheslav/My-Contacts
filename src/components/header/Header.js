@@ -1,11 +1,11 @@
 import React from 'react';
-import { mainLogoIcon } from '../icons/icons';
+import { mainLogoIcon } from '../../icons/icons';
 import './Header.css';
-import HeaderNavigation from './HeaderNavigation';
-import { SignIn } from './SignIn';
+import HeaderNavigation from '../contacts/contacts_header/HeaderNavigation';
+import { SignIn } from '../login/SignIn';
 import { useSelector } from 'react-redux';
-import { selectIsUser } from '../features/reduxSlices/userSlice';
-import { UserDashboard } from './UserDashboard';
+import { selectIsUser } from '../../features/reduxSlices/userSlice';
+import { UserDashboard } from './user_dashboard/UserDashboard';
 
 export const Header = () => {
   const isLogged = useSelector(selectIsUser);

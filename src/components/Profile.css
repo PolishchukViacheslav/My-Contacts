@@ -1,8 +1,8 @@
-.user-profile {
+.profile {
   padding-top: 30px;
 }
 
-.user-profile__wrapper {
+.profile__wrapper {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -13,32 +13,52 @@
   overflow: hidden;
 }
 
-.user-profile__title {
+.profile__title {
   text-align: center;
   margin: 0;
 }
 
-.user-profile__foto {
+.profile__foto {
   display: block;
   width: 200px;
   height: 200px;
   object-fit: fill;
 }
 
-.user-profile__text-area {
+.profile__text-area {
   display: flex;
   flex-direction: column;
   padding: 20px;
+  max-width: 360px;
 }
 
-.user-profile__link {
+.profile__link {
   text-decoration: none;
 }
 
-.user-profile__nationality {
+.profile__nationality {
   border: 1px solid red;
   border-radius: 5px;
   padding: 3px 5px;
   width: max-content;
   background-color: lightgoldenrodyellow;
+}
+
+.profile__button {
+  margin: 0 auto;
+  width: 120px;
+  height: 25px;
+  display: block;
+  background-color: #1890ff;
+  border-radius: 4px;
+  margin-top: 40px;
+  transition: transform 0.2s, opacity 0.7s cubic-bezier(.22,1.88,0,-1.04)
+} 
+
+.profile__button:hover {
+  transform: scale(1.05);
+}
+
+.profile__button:active {
+  opacity: 0.5;
 }

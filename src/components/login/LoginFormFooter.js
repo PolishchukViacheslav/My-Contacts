@@ -1,7 +1,7 @@
 import React from 'react'
 import './LoginFormFooter.css';
 import { useDispatch } from 'react-redux';
-import { setVisibility } from '../features/reduxSlices/loginPopupSlice';
+import { setVisibility } from '../../features/reduxSlices/loginPopupSlice';
 
 export const LoginFormFooter = () => {
   const dispatch = useDispatch();

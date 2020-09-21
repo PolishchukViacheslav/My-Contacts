@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector, useDispatch } from 'react-redux';
-import { selectUser, setUser, getUser } from '../features/reduxSlices/userSlice';
-import { USER_URL } from '../features/API/config';
+import { selectUser, setUser, getUser } from '../../../features/reduxSlices/userSlice';
+import { USER_URL } from '../../../features/API/config';
 import './UserDashboard.css';
-import { arrowIcon } from '../icons/icons';
+import { arrowIcon } from '../../../icons/icons';
 import { Dropdown } from './Dropdown';
 
 export const UserDashboard = () => {
@@ -25,6 +25,7 @@ export const UserDashboard = () => {
 
     if (localStorage.hasOwnProperty('user') && user === null) {
       dispatch(setUser(JSON.parse(localStorage.getItem('user'))));
+      console.log('wuegsfku');
     };
   }, [dispatch, user]);
 

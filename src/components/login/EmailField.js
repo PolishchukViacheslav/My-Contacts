@@ -1,5 +1,5 @@
 import React from 'react';
-import { userIcon } from '../icons/icons';
+import { userIcon } from '../../icons/icons';
 
 export const EmailField = ({ input, meta: { touched, error, active } }) => {
     return (<>

@@ -1,8 +1,8 @@
 import React from 'react'
-import { signInIcon } from '../icons/icons'
+import { signInIcon } from '../../icons/icons'
 import LoginPopup from './LoginPopup'
 import { useDispatch, useSelector } from 'react-redux';
-import { setVisibility, selectPopupVisibility } from '../features/reduxSlices/loginPopupSlice';
+import { setVisibility, selectPopupVisibility } from '../../features/reduxSlices/loginPopupSlice';
 
 export const SignIn = () => {
   const dispatch = useDispatch();

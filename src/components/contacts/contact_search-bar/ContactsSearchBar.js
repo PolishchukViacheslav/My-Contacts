@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectContacts } from '../../features/reduxSlices/contactsSlice';
-import { setActiveGender, setActiveName, setActiveNat, setDefaultFilteredContacts, setIsContactsWereUpdated } from '../../features/reduxSlices/filterSlice';
+import { selectContacts } from '../../../features/reduxSlices/contactsSlice';
+import { setActiveGender, setActiveName, setActiveNat, setDefaultFilteredContacts, setIsContactsWereUpdated } from '../../../features/reduxSlices/filterSlice';
 import './ContactsSearchBar.css';
 import { FilterByGender } from './filters/FilterByGender';
 import { FilterByName } from './filters/FilterByName';
@@ -14,7 +14,7 @@ export const ContactsSearchBar = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-console.log('tet', contacts);
+    
     dispatch(setActiveName(null));
     dispatch(setActiveNat(null));
     dispatch(setActiveGender(null));

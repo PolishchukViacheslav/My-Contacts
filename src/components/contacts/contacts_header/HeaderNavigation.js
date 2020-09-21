@@ -1,12 +1,12 @@
 import React from 'react';
 import './HeaderNavigation.css';
 import { useSelector } from 'react-redux';
-import { selectIsUser } from '../features/reduxSlices/userSlice';
+import { selectIsUser } from '../../../features/reduxSlices/userSlice';
 import { NavLink } from 'react-router-dom';
 
 function HeaderNavigation() {
   const isUser = useSelector(selectIsUser);
-  const activeStyle = {color: "black", cursor: "default"};
+
 
   return (
     <nav className="header__navigation nav">
@@ -15,8 +15,11 @@ function HeaderNavigation() {
           <NavLink 
             to="/"
             className="nav__link"
-            activeStyle={activeStyle}
-
+            activeClassName="nav__link--active"
+            isActive={({ url }) => {
+              console.log('param', url);
+              return url === '/' ? true : false
+            }}
           >
             Home
           </NavLink>
@@ -26,7 +29,10 @@ function HeaderNavigation() {
             <NavLink 
             to="/contacts"
             className="nav__link"
-            activeStyle={activeStyle}
+            activeClassName="nav__link--active"
+            isActive={(params) => {
+              return params?.url === '/contacts' ? true : false
+            }}
             >
               Contacts
             </NavLink>

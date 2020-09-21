@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { hiddenInputFieldIcon, lockIcon, visibleInputFieldIcon } from '../icons/icons';
+import { hiddenInputFieldIcon, lockIcon, visibleInputFieldIcon } from '../../icons/icons';
 
 export const PasswordField = ({ input, meta: { touched, error, active } }) => {
   const [ fieldType, setFieldType ] = useState('password');

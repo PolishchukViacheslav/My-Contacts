@@ -2,8 +2,8 @@ import React from 'react';
 import LoginForm from './LoginForm';
 import './LoginPopup.css';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectPopupVisibility, setVisibility } from '../features/reduxSlices/loginPopupSlice';
-import { setIsUser } from '../features/reduxSlices/userSlice';
+import { selectPopupVisibility, setVisibility } from '../../features/reduxSlices/loginPopupSlice';
+import { setIsUser } from '../../features/reduxSlices/userSlice';
 import { useHistory } from 'react-router-dom';
 
 const LoginPopup = () => {
@@ -15,7 +15,7 @@ const LoginPopup = () => {
     console.log('event', event);
     dispatch(setIsUser(true));
     dispatch(setVisibility(false));
-    history.push('/contacts')
+    history.push('/profile')
   };
 
   return (

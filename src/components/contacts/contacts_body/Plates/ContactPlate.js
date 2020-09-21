@@ -1,16 +1,21 @@
 import React from 'react';
-import './Contact.css';
+import './ContactPlate.css';
 import { useSelector } from 'react-redux';
-import { selectStringifyMode } from '../features/reduxSlices/contactsPageConfigSlice';
+import { selectStringifyMode } from '../../../../features/reduxSlices/contactsPageConfigSlice';
+import { useHistory } from 'react-router-dom';
 
-function Contact(props) {
+export const ContactPlate = (props) => {
   const { contact } = props;
+  const history = useHistory();
 
   const isContactsStringView = useSelector(selectStringifyMode);
   const viewModifier = isContactsStringView ? '--stringify' : '';
+  const handleClick = () => {
+    history.push(`/${contact.login.uuid}`)
+  }
 
   return (
-    <li className={`contacts__item contact${viewModifier}`}>
+    <li className={`contacts__item contact${viewModifier}`} onClick={handleClick}>
         <img src={contact?.picture?.large} alt="contact" className={`contact__foto${viewModifier}`}/>
         <div className={`contact__text-area${viewModifier}`}>
           <span className="contact__name">
@@ -25,5 +30,3 @@ function Contact(props) {
     </li>
   )
 };
-
-export default Contact;
