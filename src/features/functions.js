@@ -1,5 +1,5 @@
 import store from "../app/store";
-import { setSortType } from "./reduxSlices/filterSlice";
+import { setSortType, setStatistic } from "./reduxSlices/filterSlice";
 
 /**
  * 
@@ -33,16 +33,46 @@ export const getPieceOfData = (array, string) => {
  * @param {String} nationality 
  */
 export const contactsPreparator = (array, name, gender, nationality) => {
-  if (name === null && gender == null && nationality === null) {
+
+  if (name === null && gender === null && nationality === null) {
+    
+    if (array.length) {
+      
+      store.dispatch(setStatistic(store.getState().contacts.initialStat));
+
+    }
     return array;
   }
 
-  return array.filter(
+  const statistic = {
+    collectionSize: '',
+    males: 0,
+    females: 0,
+    indeterminate: 0,
+    predominate: '',
+    nationalities: {},
+  };
+
+  const preparedContacts = array.filter(
     ({ nat: contactNat, gender: contactGender, name: dirtyName }) => {
-    // const contactName = Object.values(dirtyName).join(' ').toLowerCase();
 
     if (name === null && gender === null && nationality !== null) {
       const isNatEqual = contactNat.toLowerCase() === nationality.toLowerCase();
+
+      if (isNatEqual) {
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+        console.log('gender', contactGender, );
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+
+        if (statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat]++;
+        }
+  
+        if (!statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat] = 1;
+        }
+
+      }
 
       return isNatEqual ? true : false;
     }
@@ -50,12 +80,41 @@ export const contactsPreparator = (array, name, gender, nationality) => {
     if (name === null && gender !== null && nationality !== null) {
       const isNatEqual = contactNat.toLowerCase() === nationality.toLowerCase();
       const isGenderEqual = contactGender.toLowerCase() === gender.toLowerCase();
+      const isEqual = isNatEqual && isGenderEqual;
 
-      return isNatEqual && isGenderEqual ? true : false;
+      if (isEqual) {
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+        console.log('gender', contactGender, );
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+
+        if (statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat]++;
+        }
+  
+        if (!statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat] = 1;
+        }
+
+      }
+
+      return isEqual ? true : false;
     }
 
     if (name === null && gender !== null && nationality === null) {
       const isGenderEqual = contactGender.toLowerCase() === gender.toLowerCase();
+
+      if (isGenderEqual) {
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+
+        if (statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat]++;
+        }
+  
+        if (!statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat] = 1;
+        }
+
+      }
 
       return isGenderEqual ? true : false;
     }
@@ -64,6 +123,21 @@ export const contactsPreparator = (array, name, gender, nationality) => {
       const contactName = Object.values(dirtyName).join(' ').toLowerCase();
       const isNameContains = contactName.toLowerCase().includes(name);
 
+      if (isNameContains) {
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+        console.log('gender', contactGender, );
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+
+        if (statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat]++;
+        }
+  
+        if (!statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat] = 1;
+        }
+
+      }
+
       return isNameContains;
     }
 
@@ -71,8 +145,24 @@ export const contactsPreparator = (array, name, gender, nationality) => {
       const contactName = Object.values(dirtyName).join(' ').toLowerCase();
       const isNameContains = contactName.toLowerCase().includes(name);
       const isNatEqual = contactNat.toLowerCase() === nationality.toLowerCase();
+      const isEqual = isNameContains && isNatEqual;
 
-      return isNameContains && isNatEqual ? true : false;
+      if (isEqual) {
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+        console.log('gender', contactGender, );
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+
+        if (statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat]++;
+        }
+  
+        if (!statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat] = 1;
+        }
+
+      }
+
+      return isEqual ? true : false;
     }
     
     if (name !== null && gender !== null && nationality !== null) {
@@ -80,20 +170,60 @@ export const contactsPreparator = (array, name, gender, nationality) => {
       const isNameContains = contactName.toLowerCase().includes(name);
       const isNatEqual = contactNat.toLowerCase() === nationality.toLowerCase();
       const isGenderEqual = contactGender.toLowerCase() === gender.toLowerCase();
+      const isEqual = isNameContains && isNatEqual && isGenderEqual;
+
+      if (isEqual) {
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+        console.log('gender', contactGender, );
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+
+        if (statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat]++;
+        }
+  
+        if (!statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat] = 1;
+        }
+
+      }
 
 
-      return isNameContains && isNatEqual && isGenderEqual ? true : false;
+      return isEqual ? true : false;
     }
 
     if (name !== null && gender !== null && nationality === null) {
       const contactName = Object.values(dirtyName).join(' ').toLowerCase();
       const isNameContains = contactName.toLowerCase().includes(name);
       const isGenderEqual = contactGender.toLowerCase() === gender.toLowerCase();
+      const isEqual = isNameContains && isGenderEqual;
 
-      return isNameContains && isGenderEqual ? true : false;
+      if (isEqual) {
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+        console.log('gender', contactGender, );
+        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+
+        if (statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat]++;
+        }
+  
+        if (!statistic.nationalities.hasOwnProperty(contactNat)) {
+          statistic.nationalities[contactNat] = 1;
+        }
+
+      }
+
+      return isEqual ? true : false;
     }
 
+    return null;
   });
+
+  statistic.collectionSize = preparedContacts.length;
+  statistic.predominate = +statistic.males > +statistic.females ? 'male' : 'female';
+
+  store.dispatch(setStatistic(statistic));
+
+  return preparedContacts
 };
 
 /**
@@ -135,4 +265,3 @@ export const sorter = (contacts, sortType = 'default') => {
     });
 
 }
-

@@ -1,11 +1,43 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { natMap } from '../iso2NatMap';
 
 export const getContacts = createAsyncThunk(
   'contacts/getContacts', 
   async (endpoint, { dispatch }) => {
     const fetchPromise = await fetch(endpoint);
     const { results } = await fetchPromise.json();
-    dispatch(setDefaultValue(results))
+    const statistic = {
+      collectionSize: results.length,
+      males: 0,
+      females: 0,
+      indeterminate: 0,
+      predominate: '',
+      nationalities: {},
+    };
+
+    results.forEach(({ gender, nat }) => {
+
+      statistic.nationalities.hasOwnProperty(natMap[nat]) ? statistic.nationalities[natMap[nat]]++ : statistic.nationalities[natMap[nat]] = 1;
+
+      if (gender === 'male') {
+        statistic.males++;
+      }
+
+      if (gender === 'female') {
+        statistic.females++;
+      }
+
+      if (gender === 'indeterminate') {
+        statistic.indeterminate++;
+      }
+
+    });
+
+    statistic.predominate = +statistic.males > +statistic.females ? 'male' : 'female';
+
+    dispatch(setDefaultValue(results));
+    dispatch(setInitialStat(statistic));
+
     return results;
     } 
 );
@@ -15,14 +47,24 @@ export const contactsSlice = createSlice({
   initialState: {
     defaultValue: [],
     value: [],
+    initialStat: {},
   },
   reducers: {
     setDefaultValue: (state, action) => {
+
       state.defaultValue = action.payload
+      
     },
     setContacts: (state, action) => {
+
       state.value = [...action.payload]
+
     },
+    setInitialStat: (state, action) => {
+
+      state.initialStat = action.payload;
+
+    }
   },
   extraReducers: {
     [getContacts.fulfilled]: (state, action) => {
@@ -34,9 +76,10 @@ export const contactsSlice = createSlice({
   }
 });
 
-export const { setDefaultValue, setContacts } = contactsSlice.actions;
+export const { setInitialStat, setDefaultValue, setContacts } = contactsSlice.actions;
 
 
 
 export const selectContacts = state => state.contacts.value;
+export const selectInitialStat = state => state.contacts.initialStat;
 export default contactsSlice.reducer;

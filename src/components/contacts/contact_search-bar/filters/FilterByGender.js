@@ -10,18 +10,16 @@ export const FilterByGender = () => {
   const activeName = useSelector(selectActiveName);
   const activeGender = useSelector(selectActiveGender);
   const initialValue = activeGender ? activeGender : 'all';
+
   const [value, setValue] = useState(initialValue);
   const initialContacts = useSelector(selectContacts);
   const contacts = useSelector(selectPreparedContacts);
   const genders = getPieceOfData(contacts, 'gender');
 
-console.log('out', genders, contacts, value, activeGender, initialValue, initialContacts);
   const handleChange = ({target: { value }}) => {
-    console.log('value', value);
     const reduxValue = (value.toLowerCase() === 'all') ? null : value.toLowerCase();
     const stateValue = (value.toLowerCase() === 'all') ? 'all' : value.toLowerCase();
     const filteredContacts = contactsPreparator(initialContacts, activeName, reduxValue, activeNat);
-    console.log('in', genders);
 
     setValue(stateValue);
 
@@ -35,7 +33,7 @@ console.log('out', genders, contacts, value, activeGender, initialValue, initial
 
   useEffect(() => {
     setValue(initialValue);
-  }, [initialValue, contacts])
+  }, [dispatch, initialValue, contacts])
 
   return (
     <select className="search-bar__item" name="gender" value={value} onChange={handleChange}>

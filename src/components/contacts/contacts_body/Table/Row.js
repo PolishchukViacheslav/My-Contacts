@@ -1,5 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { natMap } from '../../../../features/iso2NatMap';
 import './Row.css';
 
 export const Row = (props) => {
@@ -35,7 +36,7 @@ export const Row = (props) => {
             {`${location.postcode}, ${location.state}, ${location.street.name} ${location.street.number}`}
           </span>
         </td>
-        <td><span className="contact-row__nationality">{nat}</span></td>
+        <td><span className="contact-row__nationality">{natMap[nat]}</span></td>
       </tr>
     </>
   )

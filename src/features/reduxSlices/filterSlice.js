@@ -9,10 +9,17 @@ export const filterSlice = createSlice({
     activeGender: null,
     isContactsWereUpdated: false,
     sortType: 'default',
+    statistic: {
+      collectionSize: '',
+      males: 0,
+      females: 0,
+      indeterminate: 0,
+      predominate: '',
+      nationalities: {},
+    },
   },
   reducers: {
     setDefaultFilteredContacts: (state, action) => {
-      console.log('asd', action);
       return {
       ...state,
       preparedContacts: [...action.payload],
@@ -47,6 +54,11 @@ export const filterSlice = createSlice({
         ...state,
         sortType: action.payload,
       }
+    },
+    setStatistic: (state, action) => {
+      
+      state.statistic = action.payload
+
     }
   }
 });
@@ -57,7 +69,8 @@ export const {
   setActiveName,
   setActiveGender,
   setActiveNat,
-  setDefaultFilteredContacts
+  setDefaultFilteredContacts,
+  setStatistic,
   } = filterSlice.actions;
 
 
@@ -69,4 +82,6 @@ export const selectActiveName = state => state.filters.activeName;
 export const selectActiveGender = state => state.filters.activeGender;
 export const selectIsContactsUpdated = state => state.filters.isContactsWereUpdated;
 export const selectSortType = state => state.filters.sortType;
+export const selectStatistic = state => state.filters.statistic;
+
 export default filterSlice.reducer;

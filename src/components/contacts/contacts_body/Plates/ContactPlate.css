@@ -30,49 +30,10 @@
 }
 
 .contact__nationality {
-  margin-top: 5px;
+  margin: 5px 0 10px;
   border: 1px solid red;
   border-radius: 5px;
   padding: 3px 5px;
   width: max-content;
   background-color: lightgoldenrodyellow;
-}
-
-.contact--stringify {
-  display: flex;
-  width: max-content;
-  overflow: scroll;
-  margin-bottom: 5px;
-  border-bottom: 1px solid lightgrey;
-  border-radius: 8px;
-  transition: box-shadow 0.2s, transform 0.2s;
-}
-
-.contact__foto--stringify {
-  position: sticky;
-  left: 5px;
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  margin: 0 5px;
-}
-
-.contact__text-area--stringify {
-  display: flex;
-  align-items: center;
-}
-
-.contact__nationality--stringify {
-  margin-top: 0;
-  margin-left: 5px;
-  border: 1px solid red;
-  border-radius: 5px;
-  padding: 3px 5px;
-  width: max-content;
-  background-color: lightgoldenrodyellow;
-}
-
-.contact__link--stringify {
-  text-decoration: none;
-  margin: 0 5px;
 }

@@ -25,7 +25,6 @@ export const UserDashboard = () => {
 
     if (localStorage.hasOwnProperty('user') && user === null) {
       dispatch(setUser(JSON.parse(localStorage.getItem('user'))));
-      console.log('wuegsfku');
     };
   }, [dispatch, user]);
 

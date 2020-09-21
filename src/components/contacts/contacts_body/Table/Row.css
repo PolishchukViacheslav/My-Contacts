@@ -52,10 +52,9 @@
 .contact-row__nationality {
   display: block;
   text-align: center;
-  margin-left: 25px;
   border: 1px solid red;
   border-radius: 5px;
   padding: 3px 5px;
-  width: 30px;
+  width: max-content;
   background-color: lightgoldenrodyellow;
 }
