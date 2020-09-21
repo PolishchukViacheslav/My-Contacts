@@ -36,3 +36,9 @@
 .user-dashboard__dropdown {
   font-size: 16px;
 }
+
+@media screen and (max-width: 560px) {
+  .user-dashboard__text {
+    display: none;
+  }
+} 

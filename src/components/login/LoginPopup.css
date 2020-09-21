@@ -19,7 +19,8 @@
 }
 
 .login__popup-wrapper {
-  width: 520px;
+  max-width: 520px;
+  width: inherit;
   border-radius: 3px;
   text-align: left;
   background-color: #fff;

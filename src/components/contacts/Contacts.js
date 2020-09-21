@@ -9,6 +9,7 @@ import { ContactsPlates } from './contacts_body/Plates/ContactsPlates';
 import { ContactsTable } from './contacts_body/Table/ContactsTable';
 import { selectStringifyMode } from '../../features/reduxSlices/contactsPageConfigSlice';
 import { Statistic } from './statistic/Statistic';
+import { PaginationRounded } from '../Pagination';
 
 export function Contacts() {
   const dispatch = useDispatch();
@@ -29,6 +30,7 @@ export function Contacts() {
       <ContactsSearchBar />
       {isStringMode ? <ContactsTable /> : <ContactsPlates />}
       <Statistic />
+      <PaginationRounded />
     </div>
   );
 }

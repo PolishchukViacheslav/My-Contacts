@@ -1,5 +1,6 @@
 import store from "../app/store";
 import { setSortType, setStatistic } from "./reduxSlices/filterSlice";
+import { setPagesCount } from "./reduxSlices/paginationSlice";
 
 /**
  * 
@@ -37,9 +38,14 @@ export const contactsPreparator = (array, name, gender, nationality) => {
   if (name === null && gender === null && nationality === null) {
     
     if (array.length) {
-      
-      store.dispatch(setStatistic(store.getState().contacts.initialStat));
+      const pages = (array.length <= store.getState().pagination.perPage)
+        ?
+        1
+        :
+        Math.ceil(array.length/store.getState().pagination.perPage);
 
+      store.dispatch(setStatistic(store.getState().contacts.initialStat));
+      store.dispatch(setPagesCount(pages));
     }
     return array;
   }

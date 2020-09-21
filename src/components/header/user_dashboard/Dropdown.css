@@ -28,3 +28,9 @@
   vertical-align: -0.15em;
   padding-right: 10px;
 }
+
+@media screen and (max-width: 560px) {
+  .dropdown__icon {
+    margin-left: 10px;
+  }
+}

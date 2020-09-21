@@ -1,7 +1,5 @@
 import React from 'react';
 import './ContactPlate.css';
-import { useSelector } from 'react-redux';
-import { selectStringifyMode } from '../../../../features/reduxSlices/contactsPageConfigSlice';
 import { useHistory } from 'react-router-dom';
 import { natMap } from '../../../../features/iso2NatMap';
 
@@ -9,8 +7,6 @@ export const ContactPlate = (props) => {
   const { contact } = props;
   const history = useHistory();
 
-  const isContactsStringView = useSelector(selectStringifyMode);
-  const viewModifier = isContactsStringView ? '--stringify' : '';
   const handleClick = () => {
     history.push(`/${contact.login.uuid}`)
   }

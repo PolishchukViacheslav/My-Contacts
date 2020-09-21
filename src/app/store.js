@@ -4,6 +4,7 @@ import loginPopupReducer from '../features/reduxSlices/loginPopupSlice';
 import contactsPageReducer from '../features/reduxSlices/contactsPageConfigSlice';
 import userReducer from '../features/reduxSlices/userSlice';
 import filtersReducer from '../features/reduxSlices/filterSlice';
+import paginationReducer from '../features/reduxSlices/paginationSlice';
 import { reducer as formFReducer } from 'redux-form';
 
 export default configureStore({
@@ -13,6 +14,7 @@ export default configureStore({
     user: userReducer,
     contactsPageConfig: contactsPageReducer,
     filters: filtersReducer,
+    pagination: paginationReducer,
     form: formFReducer,
   },
 });
