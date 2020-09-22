@@ -1,6 +1,6 @@
 import store from "../app/store";
 import { setSortType, setStatistic } from "./reduxSlices/filterSlice";
-import { setPagesCount } from "./reduxSlices/paginationSlice";
+import { setPagesCount, setPrepContSlice } from "./reduxSlices/paginationSlice";
 
 /**
  * 
@@ -28,9 +28,42 @@ export const getPieceOfData = (array, string) => {
 
 /**
  * 
+ * @param {Array} array used for pagination
+ */
+const pagesCounter = (array) => {
+  const pages = (array.length <= store.getState().pagination.perPage)
+  ?
+  1
+  :
+  Math.ceil(array.length/store.getState().pagination.perPage);
+
+  return pages;
+} 
+
+/**
+ * 
+ * @param {Array} array from slice will created 
+ * @param {Number} start index from what to start
+ * @param {Number} end index for end (this index wouldn't be include)
+ */
+const createPrepContactSlice = (array, start, end) => {
+  const perPage = store.getState().pagination.perPage;
+  const startIndex = start || 0;
+  const endIndex = end || (startIndex + perPage); 
+  const contactsSlice = array.slice(startIndex, endIndex);
+
+  return contactsSlice;
+
+}
+
+/**
+ * 
  * @param {Array} array 
+ * 
  * @param {String} name 
+ * 
  * @param {String} gender 
+ * 
  * @param {String} nationality 
  */
 export const contactsPreparator = (array, name, gender, nationality) => {
@@ -38,14 +71,14 @@ export const contactsPreparator = (array, name, gender, nationality) => {
   if (name === null && gender === null && nationality === null) {
     
     if (array.length) {
-      const pages = (array.length <= store.getState().pagination.perPage)
-        ?
-        1
-        :
-        Math.ceil(array.length/store.getState().pagination.perPage);
+      const pagesCount = pagesCounter(array);
+      const contactsPerPage = store.getState().pagination.perPage;
+      const contactsSlice = pagesCount <= 1 ? array : array.slice(0 ,contactsPerPage); 
 
       store.dispatch(setStatistic(store.getState().contacts.initialStat));
-      store.dispatch(setPagesCount(pages));
+      store.dispatch(setPagesCount(pagesCount));
+      store.dispatch(setPrepContSlice(contactsSlice));
+      console.log('pagesCount', store.dispatch(setPagesCount(pagesCount)));
     }
     return array;
   }
@@ -225,7 +258,9 @@ export const contactsPreparator = (array, name, gender, nationality) => {
   });
 
   statistic.collectionSize = preparedContacts.length;
-  statistic.predominate = +statistic.males > +statistic.females ? 'male' : 'female';
+  statistic.predominate = +statistic.males > +statistic.females ? 'male' : +statistic.males < +statistic.females ? 'female' : 'friend';
+  store.dispatch(setPagesCount(pagesCounter(preparedContacts)));
+  store.dispatch(setPrepContSlice(createPrepContactSlice(preparedContacts)));
 
   store.dispatch(setStatistic(statistic));
 

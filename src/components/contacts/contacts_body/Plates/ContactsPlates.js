@@ -1,10 +1,10 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import { selectPreparedContacts } from '../../../../features/reduxSlices/filterSlice';
+import { selectPrepContSlice } from '../../../../features/reduxSlices/paginationSlice';
 import { ContactPlate } from './ContactPlate';
 
 export const ContactsPlates = () => {
-  const contacts = useSelector(selectPreparedContacts);
+  const contacts = useSelector(selectPrepContSlice);
 
   return (
     <ul className="contacts">

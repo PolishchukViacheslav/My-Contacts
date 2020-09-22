@@ -2,13 +2,14 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { sorter } from '../../../../features/functions';
 import { selectContacts, setContacts } from '../../../../features/reduxSlices/contactsSlice';
-import { selectPreparedContacts, selectSortType } from '../../../../features/reduxSlices/filterSlice';
+import { selectSortType } from '../../../../features/reduxSlices/filterSlice';
+import { selectPrepContSlice } from '../../../../features/reduxSlices/paginationSlice';
 import { arrowUp, arrowDown } from '../../../../icons/icons';
 import './ContactsTable.css';
 import { Row } from './Row';
 
 export const ContactsTable = () => {
-  const contacts = useSelector(selectPreparedContacts);
+  const contacts = useSelector(selectPrepContSlice);
   const contactsForSort = useSelector(selectContacts);
   const dispatch = useDispatch();
   const activeSortType = useSelector(selectSortType);

@@ -33,7 +33,7 @@ export const getContacts = createAsyncThunk(
 
     });
 
-    statistic.predominate = +statistic.males > +statistic.females ? 'male' : 'female';
+    statistic.predominate = +statistic.males > +statistic.females ? 'male' : +statistic.males < +statistic.females ? 'female' : 'friend';
 
     dispatch(setDefaultValue(results));
     dispatch(setInitialStat(statistic));
