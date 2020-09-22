@@ -1,0 +1,9 @@
+.not-found {
+  display: grid;
+  place-items: center;
+  height: 100vh;
+}
+
+.not-found__title {
+  font-size: 10vw;
+}

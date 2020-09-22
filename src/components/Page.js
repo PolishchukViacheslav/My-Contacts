@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { Contacts } from './contacts/Contacts';
 import { Switch, Route } from 'react-router-dom';
 import { Home } from './Home';
-import { NotFound } from './NotFound';
+import { NotFound } from './404Page/NotFound';
 import { Profile } from './Profile';
 
 export const Page = () => {
@@ -20,7 +20,7 @@ export const Page = () => {
               {isLogged && <Route exact path="/contacts" component={Contacts} />}
               {isLogged && <Route exact path="/profile" component={Profile} />}
               {isLogged && <Route exact path="/:contactId" component={Profile} />}
-              {/* <Route to="*" component={NotFound} /> */}
+              <Route component={NotFound} />
             </Switch>
           </section>
       </>

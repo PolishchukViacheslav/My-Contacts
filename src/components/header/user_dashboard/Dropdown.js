@@ -7,6 +7,7 @@ import { setUser, setIsUser } from '../../../features/reduxSlices/userSlice';
 import { setContacts } from '../../../features/reduxSlices/contactsSlice';
 import { setStringifyMode } from '../../../features/reduxSlices/contactsPageConfigSlice';
 import { setDefaultFilteredContacts, setActiveNat, setActiveGender, setActiveName } from '../../../features/reduxSlices/filterSlice';
+import { setPrepContSlice } from '../../../features/reduxSlices/paginationSlice';
 
 export const Dropdown = ({ hideAwaySelf }) => {
   const profile = 'Profile';
@@ -29,6 +30,7 @@ export const Dropdown = ({ hideAwaySelf }) => {
         dispatch(setActiveNat(null));
         dispatch(setActiveGender(null));
         dispatch(setActiveName(null));
+        dispatch(setPrepContSlice([]));
       });
 
     };

@@ -4,7 +4,14 @@ import { selectStatistic } from '../../../features/reduxSlices/filterSlice';
 import './Statistic.css';
 
 export const Statistic = () => {
-  const { collectionSize, males, females, indeterminate, predominate, nationalities } = useSelector(selectStatistic);
+  const {
+    collectionSize,
+    males,
+    females,
+    indeterminate,
+    predominate,
+    nationalities,
+    } = useSelector(selectStatistic);
 
   return (
     <div className="statistic">
@@ -20,8 +27,8 @@ export const Statistic = () => {
         {Object.keys(nationalities)?.map(
           (nat, i) => (
             <div className="" key={nat}>
-                <span className="input-label">{`${nat}:`}</span>
-                <span>{nationalities[nat]}</span>
+                <span>{`${nat}:`}</span>
+                <span className="statistic__nationality--bold">{nationalities[nat]}</span>
             </div>
         ))}
       </div>

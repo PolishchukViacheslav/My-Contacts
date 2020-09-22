@@ -14,6 +14,7 @@ export const userSlice = createSlice({
   initialState: {
     isUser,
     info: null,
+    isLoading: false,
   },
   reducers: {
     setUser: (state, action) => {
@@ -25,13 +26,24 @@ export const userSlice = createSlice({
       return {
         ...state,
         isUser: action.payload,
+        isLoading: false,
       }
     }
   },
   extraReducers: {
     [getUser.fulfilled]: (state, action) => {
-      state.info = action.payload[0]
-    }
+      return {
+        ...state,
+        info: action.payload[0],
+        isLoading: false,
+      }
+    },
+    [getUser.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getUser.rejected]: (state) => {
+      state.isLoading = false;
+    },
   }
 });
 
@@ -41,4 +53,5 @@ export const { setUser, setIsUser } = userSlice.actions;
 
 export const selectUser = state => state.user.info;
 export const selectIsUser = state => state.user.isUser;
+export const selectIsLoading = state => state.user.isLoading;
 export default userSlice.reducer;

@@ -272,6 +272,12 @@ export const contactsPreparator = (array, name, gender, nationality) => {
  * @param {Array} contacts 
  * @param {String} sortType 
  */
+
+ /**
+  * 
+  * @param {Array} contacts for sort
+  * @param {String} sortType accept next types of sort: 'asc', 'desc', 'default'
+  */
 export const sorter = (contacts, sortType = 'default') => {
   console.log('sortType', sortType);
   const nextSortType = (sortType === 'default') ? 'asc': (sortType === 'asc') ? 'desc' : 'default';

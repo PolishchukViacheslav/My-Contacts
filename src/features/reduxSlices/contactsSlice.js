@@ -48,6 +48,7 @@ export const contactsSlice = createSlice({
     defaultValue: [],
     value: [],
     initialStat: {},
+    isLoading: false,
   },
   reducers: {
     setDefaultValue: (state, action) => {
@@ -71,8 +72,16 @@ export const contactsSlice = createSlice({
       return {
         ...state,
         value: action.payload,
+        isLoading: false,
       }
-    }
+    },
+    [getContacts.pending]: (state) => {
+      state.isLoading = true;
+    },
+    [getContacts.rejected]: (state) => {
+      state.isLoading = false;
+    },
+
   }
 });
 
@@ -82,4 +91,5 @@ export const { setInitialStat, setDefaultValue, setContacts } = contactsSlice.ac
 
 export const selectContacts = state => state.contacts.value;
 export const selectInitialStat = state => state.contacts.initialStat;
+export const selectIsLoading = state => state.contacts.isLoading;
 export default contactsSlice.reducer;

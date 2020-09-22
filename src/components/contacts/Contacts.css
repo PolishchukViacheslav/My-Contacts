@@ -16,3 +16,25 @@
   margin: 0 auto 60px;
   max-width: max-content;
 }
+
+.contacts__loading {
+  position: absolute;
+  top: 0;
+  opacity: 0.8;
+  width: 100vw;
+  overflow: scroll;
+  height: stretch;
+  min-height: 100vh;
+  background-color: lightgrey;
+}
+
+.contacts__loader {
+  width: 200px;
+  margin: 100px auto;
+  -webkit-animation:spin 4s linear infinite;
+  -moz-animation:spin 4s linear infinite;
+  animation:spin 8s linear infinite;
+}
+@-moz-keyframes spin { 100% { -moz-transform: rotate(360deg); } }
+@-webkit-keyframes spin { 100% { -webkit-transform: rotate(360deg); } }
+@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
