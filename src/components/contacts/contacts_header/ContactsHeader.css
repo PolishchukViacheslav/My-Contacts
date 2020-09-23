@@ -17,10 +17,12 @@
   color:#1890ff;
   background-color: #fff;
   transition: color 0.2s;
+  z-index: 2;
+
 }
 
 .contacts__button--dotted:hover {
-  color: #40a9ff;
+  color: #f08080;
   border-color: #40a9ff;
 }
 

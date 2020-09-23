@@ -18,20 +18,24 @@
 }
 
 .contacts__loading {
-  position: absolute;
-  top: 0;
+  display: grid;
+  place-items: center;
+  position: fixed;
+  top: 60px;
   left: 0;
   opacity: 0.8;
   width: 100vw;
   overflow: scroll;
-  height: stretch;
+  height: 100%;
   min-height: 100vh;
   background-color: lightgrey;
+  z-index: 1;
 }
 
 .contacts__loader {
-  width: 200px;
-  margin: 100px auto;
+  display: inline-block;
+  width: 300px;
+  /* margin: 200px auto; */
   -webkit-animation:spin 4s linear infinite;
   -moz-animation:spin 4s linear infinite;
   animation:spin 8s linear infinite;
