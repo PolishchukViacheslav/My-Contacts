@@ -78,7 +78,6 @@ export const contactsPreparator = (array, name, gender, nationality) => {
       store.dispatch(setStatistic(store.getState().contacts.initialStat));
       store.dispatch(setPagesCount(pagesCount));
       store.dispatch(setPrepContSlice(contactsSlice));
-      console.log('pagesCount', store.dispatch(setPagesCount(pagesCount)));
     }
     return array;
   }
@@ -100,8 +99,6 @@ export const contactsPreparator = (array, name, gender, nationality) => {
 
       if (isNatEqual) {
         contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
-        console.log('gender', contactGender, );
-        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
 
         if (statistic.nationalities.hasOwnProperty(contactNat)) {
           statistic.nationalities[contactNat]++;
@@ -122,8 +119,7 @@ export const contactsPreparator = (array, name, gender, nationality) => {
       const isEqual = isNatEqual && isGenderEqual;
 
       if (isEqual) {
-        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
-        console.log('gender', contactGender, );
+        console.log('stat', statistic);
         contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
 
         if (statistic.nationalities.hasOwnProperty(contactNat)) {
@@ -164,8 +160,6 @@ export const contactsPreparator = (array, name, gender, nationality) => {
 
       if (isNameContains) {
         contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
-        console.log('gender', contactGender, );
-        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
 
         if (statistic.nationalities.hasOwnProperty(contactNat)) {
           statistic.nationalities[contactNat]++;
@@ -187,8 +181,6 @@ export const contactsPreparator = (array, name, gender, nationality) => {
       const isEqual = isNameContains && isNatEqual;
 
       if (isEqual) {
-        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
-        console.log('gender', contactGender, );
         contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
 
         if (statistic.nationalities.hasOwnProperty(contactNat)) {
@@ -213,8 +205,7 @@ export const contactsPreparator = (array, name, gender, nationality) => {
 
       if (isEqual) {
         contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
-        console.log('gender', contactGender, );
-        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
+        // contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
 
         if (statistic.nationalities.hasOwnProperty(contactNat)) {
           statistic.nationalities[contactNat]++;
@@ -237,8 +228,6 @@ export const contactsPreparator = (array, name, gender, nationality) => {
       const isEqual = isNameContains && isGenderEqual;
 
       if (isEqual) {
-        contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
-        console.log('gender', contactGender, );
         contactGender === 'male' ? statistic.males++ : contactGender === 'female' ? statistic.females++ : statistic.indeterminate++;
 
         if (statistic.nationalities.hasOwnProperty(contactNat)) {
@@ -279,7 +268,6 @@ export const contactsPreparator = (array, name, gender, nationality) => {
   * @param {String} sortType accept next types of sort: 'asc', 'desc', 'default'
   */
 export const sorter = (contacts, sortType = 'default') => {
-  console.log('sortType', sortType);
   const nextSortType = (sortType === 'default') ? 'asc': (sortType === 'asc') ? 'desc' : 'default';
 
   store.dispatch(setSortType(nextSortType));

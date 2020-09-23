@@ -14,7 +14,6 @@ export const Profile = ({ match: { params } }) => {
   const isLoading = useSelector(selectIsLoading);
 
   if (isContact && (params.contactId !== 'myContacts')) {
-    console.log('isCont', isContact, params);
     user = contacts?.find(({ login }) => login.uuid === params.contactId)
   }
 

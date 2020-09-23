@@ -28,7 +28,6 @@ export const PaginationRounded = () => {
     const endIndex = startIndex + perPage; 
     const contactsSlice = contacts.slice(startIndex, endIndex);
     dispatch(setPrepContSlice(contactsSlice));
-    console.log('event', page);
   }
 
   return (

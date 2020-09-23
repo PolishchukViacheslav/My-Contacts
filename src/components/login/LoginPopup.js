@@ -12,7 +12,6 @@ const LoginPopup = () => {
   const history = useHistory();
 
   const handleSubmit = (event) => {
-    console.log('event', event);
     dispatch(setIsUser(true));
     dispatch(setVisibility(false));
     history.push('/profile')

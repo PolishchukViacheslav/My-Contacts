@@ -1,35 +1,34 @@
 import React, { useEffect, useState } from 'react'
-import { batch, useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { contactsPreparator } from '../../../../features/functions';
 import { selectContacts } from '../../../../features/reduxSlices/contactsSlice';
-import { selectActiveGender, selectActiveName, selectActiveNat, setDefaultFilteredContacts as setPreparedContacts, setActiveName, setIsContactsWereUpdated } from '../../../../features/reduxSlices/filterSlice';
+import { selectActiveGender, selectActiveNat, setDefaultFilteredContacts as setPreparedContacts, setActiveName } from '../../../../features/reduxSlices/filterSlice';
 
 export const FilterByName = () => {
   const dispatch = useDispatch();
   const initialContact = useSelector(selectContacts);
   const activeNat = useSelector(selectActiveNat);
-  const activeName = useSelector(selectActiveName);
   const activeGender = useSelector(selectActiveGender);
-  const initialValue = activeName ? activeName : '';
 
-  const [inputValue, setInputValue] = useState(initialValue);
+  const [inputValue, setInputValue] = useState('');
 
   useEffect(() => {
-    setInputValue(initialValue)
-  },[initialValue])
+    const timer = setTimeout(() => {
 
-  const handleInputChange = ({ target: { value } }) => {
-    const reduxValueName = (value.toLowerCase() === '') ? null : value.toLowerCase();
-    const stateValueName = (value.toLowerCase() === '') ? '' : value.toLowerCase();
-    const filteredContacts = contactsPreparator(initialContact, reduxValueName, activeGender, activeNat) || [];
+      const reduxValueName = (inputValue.toLowerCase() === '') ? null : inputValue.toLowerCase();
+      const filteredContacts = contactsPreparator(initialContact, reduxValueName, activeGender, activeNat) || [];
+      
 
-    setInputValue(stateValueName);
-
-    batch(() => {
       dispatch(setActiveName(reduxValueName));
       dispatch(setPreparedContacts(filteredContacts));
-      dispatch(setIsContactsWereUpdated(true));
-    })
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  },[dispatch, inputValue]);
+
+
+  const handleInputChange = ({ target: { value } }) => {
+    setInputValue(value);
   };
 
   return (
