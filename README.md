@@ -1,4 +1,4 @@
-[Demo](https://polishchukviacheslav.github.io/myContacts), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
+[Demo](https://polishchukviacheslav.github.io/myContacts/), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) template.
 
 # Приложение Контакты
 В качестве источника данных была взята публичная REST API randomuser.me версия 1.3
