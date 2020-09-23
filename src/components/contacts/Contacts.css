@@ -35,7 +35,6 @@
 .contacts__loader {
   display: inline-block;
   width: 300px;
-  /* margin: 200px auto; */
   -webkit-animation:spin 4s linear infinite;
   -moz-animation:spin 4s linear infinite;
   animation:spin 8s linear infinite;

@@ -10,7 +10,6 @@ import { ContactsTable } from './contacts_body/Table/ContactsTable';
 import { selectStringifyMode } from '../../features/reduxSlices/contactsPageConfigSlice';
 import { Statistic } from './statistic/Statistic';
 import { PaginationRounded } from '../Pagination';
-import { Loading } from './Loading';
 
 export function Contacts() {
   const dispatch = useDispatch();
