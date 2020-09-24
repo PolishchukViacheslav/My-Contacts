@@ -14,8 +14,9 @@ import { PaginationRounded } from '../Pagination';
 export function Contacts() {
   const dispatch = useDispatch();
   const contactsFromServer = useSelector(selectContacts);
-
-  const isStringMode = useSelector(selectStringifyMode);
+  const isLocalViewMode = localStorage.hasOwnProperty('viewMode');
+  const reduxViewMode = useSelector(selectStringifyMode);
+  const isStringMode = isLocalViewMode ? localStorage.getItem('viewMode') : reduxViewMode;
 
   useEffect(() => {
     if (!contactsFromServer.length) {

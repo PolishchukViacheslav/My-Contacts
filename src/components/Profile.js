@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './Profile.css';
 import { useSelector } from 'react-redux';
 import { selectIsLoading, selectUser } from '../features/reduxSlices/userSlice';

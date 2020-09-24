@@ -29,10 +29,12 @@ export const ContactsHeader = () => {
   }
 
   const handlePlatesViewMode = () => {
+    localStorage.setItem('viewMode', false)
     dispatch(setStringifyMode(false));
   };
 
   const handleStringViewMode = () => {
+    localStorage.setItem('viewMode', true)
     dispatch(setStringifyMode(true));
   }
 
