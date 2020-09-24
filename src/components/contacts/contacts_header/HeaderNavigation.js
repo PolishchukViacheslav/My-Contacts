@@ -17,6 +17,7 @@ function HeaderNavigation() {
             className="nav__link"
             activeClassName="nav__link--active"
             isActive={({ url }) => {
+              console.log('ur');
               return url === '/' ? true : false
             }}
           >

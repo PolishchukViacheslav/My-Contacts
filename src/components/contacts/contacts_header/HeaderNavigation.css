@@ -16,4 +16,5 @@
 .nav__link.nav__link--active {
   text-decoration: none;
   color: black;
+  cursor: default;
 }

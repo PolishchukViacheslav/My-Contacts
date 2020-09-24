@@ -22,6 +22,7 @@ export const Page = () => {
             <Loading isVisible={isLoading} />
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route exact path="/myContacts" component={Home} />
               {isLogged && <Route exact path="/contacts" component={Contacts} />}
               {isLogged && <Route exact path="/profile" component={Profile} />}
               {isLogged && <Route exact path="/:contactId" component={Profile} />}
