@@ -21,28 +21,30 @@ export const ContactsTable = () => {
 
   return (
     <div className="contactsTable">
-      <table className="contactsTable__wrapper">
-        <thead>
-          <tr className="contactsTable__row">
-            <th scope="col" className="contactsTable__avatar"><span className="contactsTable__headers--center">Avatar</span></th>
-            <th scope="col" className="contactsTable__cursor-area" onClick={handleSort}>
-              <span className="contactsTable__headers--clickable">Full name</span>
-              <span className="contactsTable__sort">
-                <span className={`contactsTable__arrow-up${activeSortType === 'asc' ? '--active' : ''}`}>{arrowUp}</span>
-                <span className={`contactsTable__arrow-down${activeSortType === 'desc' ? '--active' : ''}`}>{arrowDown}</span>
-              </span>
-            </th>
-            <th scope="col"><span className="contactsTable__headers">Birthday</span></th>
-            <th scope="col"><span className="contactsTable__headers">E-mail</span></th>
-            <th scope="col"><span className="contactsTable__headers">Phone</span></th>
-            <th scope="col"><span className="contactsTable__headers">Location</span></th>
-            <th scope="col"><span className="contactsTable__headers">Nationality</span></th>
-          </tr>
-        </thead>
-        <tbody>
-          {contacts?.map(contact => <Row key={contact.login.uuid} {...contact}/>)}
-        </tbody>
-      </table>
+      <div className="contactsTable__box">
+        <table className="contactsTable__wrapper">
+          <thead>
+            <tr className="contactsTable__row">
+              <th scope="col" className="contactsTable__avatar"><span className="contactsTable__headers--center">Avatar</span></th>
+              <th scope="col" className="contactsTable__cursor-area" onClick={handleSort}>
+                <span className="contactsTable__headers--clickable">Full name</span>
+                <span className="contactsTable__sort">
+                  <span className={`contactsTable__arrow-up${activeSortType === 'asc' ? '--active' : ''}`}>{arrowUp}</span>
+                  <span className={`contactsTable__arrow-down${activeSortType === 'desc' ? '--active' : ''}`}>{arrowDown}</span>
+                </span>
+              </th>
+              <th scope="col"><span className="contactsTable__headers">Birthday</span></th>
+              <th scope="col"><span className="contactsTable__headers">E-mail</span></th>
+              <th scope="col"><span className="contactsTable__headers">Phone</span></th>
+              <th scope="col"><span className="contactsTable__headers">Location</span></th>
+              <th scope="col"><span className="contactsTable__headers">Nationality</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {contacts?.map(contact => <Row key={contact.login.uuid} {...contact}/>)}
+          </tbody>
+        </table>
+      </div>
     </div>
   )
 };

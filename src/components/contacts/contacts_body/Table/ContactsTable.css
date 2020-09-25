@@ -2,9 +2,13 @@
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-bottom: 40px;
+  margin: 0 auto 40px;
   overflow: scroll;
   font-size: 12px;
+}
+
+.contactsTable__box {
+  width: 100%;
 }
 
 .contactsTable__wrapper {
@@ -18,8 +22,9 @@
 
 .contactsTable__avatar {
   position: sticky;
-  left: 0;
+  left: -5px;
   padding: 0;
+  background-color: #fff;
 }
 
 .contactsTable__cursor-area {
