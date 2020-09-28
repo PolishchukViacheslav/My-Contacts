@@ -19,7 +19,7 @@ export const Dropdown = ({ hideAwaySelf }) => {
     const { target: { innerText } } = event;
     const redirectToProfile = () => history.push(`/${profile.toLowerCase()}`);
     const redirectToHome = () => {
-      history.push('./')
+      history.push('/')
       localStorage.clear();
       batch(() => {
         dispatch(setUser(null));

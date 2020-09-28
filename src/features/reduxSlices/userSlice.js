@@ -2,6 +2,7 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 export const getUser = createAsyncThunk('user/getUser', async (endpoint) => {
   const fetchPromise = await fetch(endpoint);
+  console.log('res', fetchPromise);
   const { results } = await fetchPromise.json();
   return results;
   } 
